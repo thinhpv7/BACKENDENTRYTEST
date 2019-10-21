@@ -38,6 +38,9 @@ public class Question {
 	@Column(nullable = true)
 	private String QUESTIONTYPEID;
 	
+	@Column(nullable = true)
+	private int LEVELOFDIFFICULTID;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="TOPICID", insertable=false, updatable=false)
     private Topic topic;
@@ -47,24 +50,21 @@ public class Question {
     private QuestionType questiontype;
 	
 	@OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private List<Answer> answer;
+    private Set<Answer> answer;
 	
 	@ManyToMany(mappedBy="question",fetch = FetchType.LAZY)
-	private List<AnswerSheet> answersheet;
+	private Set<AnswerSheet> answersheet;
 	
-//	public List<AnswerSheet> getAnswersheet() {
-//		return answersheet;
-//	}
-//
-//	public void setAnswersheet(List<AnswerSheet> answersheet) {
-//		this.answersheet = answersheet;
-//	}
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="LEVELOFDIFFICULTID", insertable=false, updatable=false)
+    private LevelOfDifficult levelofdifficult;
+	
 
-	public List<Answer> getAnswer() {
+	public Set<Answer> getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(List<Answer> answer) {
+	public void setAnswer(Set<Answer> answer) {
 		this.answer = answer;
 	}
 
@@ -108,20 +108,21 @@ public class Question {
 		QUESTIONTYPEID = qUESTIONTYPEID;
 	}
 
-//	public Topic getTopic() {
-//		return topic;
+	public int getLEVELOFDIFFICULTID() {
+		return LEVELOFDIFFICULTID;
+	}
+
+	public void setLEVELOFDIFFICULTID(int lEVELOFDIFFICULTID) {
+		LEVELOFDIFFICULTID = lEVELOFDIFFICULTID;
+	}
+
+//	public Set<AnswerSheet> getAnswersheet() {
+//		return answersheet;
 //	}
 //
-//	public void setTopic(Topic topic) {
-//		this.topic = topic;
+//	public void setAnswersheet(Set<AnswerSheet> answersheet) {
+//		this.answersheet = answersheet;
 //	}
 
-//	public QuestionType getQuestiontype() {
-//		return questiontype;
-//	}
-//
-//	public void setQuestiontype(QuestionType questiontype) {
-//		this.questiontype = questiontype;
-//	}
-//	
+	
 }

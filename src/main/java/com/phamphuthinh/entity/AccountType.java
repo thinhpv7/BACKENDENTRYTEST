@@ -29,16 +29,16 @@ public class AccountType {
 	private String NAMEACCOUNTTYPE;
 	
 	@OneToMany(mappedBy = "accounttype", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private List<Account> account;
+    private Set<Account> account;
 	
 	@ManyToMany(mappedBy="accounttype",fetch = FetchType.LAZY)
-	private List<QuestionType> questiontype;
+	private Set<QuestionType> questiontype;
 
-	public List<Account> getAccount() {
+	public Set<Account> getAccount() {
 		return account;
 	}
 
-	public void setAccount(List<Account> account) {
+	public void setAccount(Set<Account> account) {
 		this.account = account;
 	}
 
@@ -57,13 +57,5 @@ public class AccountType {
 	public void setNAMEACCOUNTTYPE(String nAMEACCOUNTTYPE) {
 		NAMEACCOUNTTYPE = nAMEACCOUNTTYPE;
 	}
-
-//	public List<QuestionType> getQuestiontype() {
-//		return questiontype;
-//	}
-//
-//	public void setQuestiontype(List<QuestionType> questiontype) {
-//		this.questiontype = questiontype;
-//	}
 
 }

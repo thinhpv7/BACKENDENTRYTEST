@@ -26,14 +26,14 @@ public class Topic {
 	private String TopicName;
 	
 	@OneToMany(mappedBy = "topic", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private List<Question> question;
+    private Set<Question> question;
 	
 
-	public List<Question> getQuestion() {
+	public Set<Question> getQuestion() {
 		return question;
 	}
 
-	public void setQuestion(List<Question> question) {
+	public void setQuestion(Set<Question> question) {
 		this.question = question;
 	}
 

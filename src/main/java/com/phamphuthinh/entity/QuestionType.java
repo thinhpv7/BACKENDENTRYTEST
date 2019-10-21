@@ -33,20 +33,19 @@ public class QuestionType {
 	@JoinTable(name = "ACCOUNTTYPEQUESTIONTYPE",
 	        joinColumns = @JoinColumn(name = "QUESTIONTYPEID"),
 	        inverseJoinColumns = @JoinColumn(name = "ACCOUNTTYPEID"))
-	private List<AccountType> accounttype;
+	private Set<AccountType> accounttype;
 	
 	@OneToMany(mappedBy = "questiontype", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private List<Question> question;
+    private Set<Question> question;
 
-//	public List<Question> getQuestion() {
-//		return question;
-//	}
-//
-//
-//	public void setQuestion(List<Question> question) {
-//		this.question = question;
-//	}
+	public Set<Question> getQuestion() {
+		return question;
+	}
 
+
+	public void setQuestion(Set<Question> question) {
+		this.question = question;
+	}
 
 	public String getQUESTIONTYPEID() {
 		return QUESTIONTYPEID;
@@ -68,13 +67,15 @@ public class QuestionType {
 	}
 
 
-	public List<AccountType> getAccounttype() {
+	public Set<AccountType> getAccounttype() {
 		return accounttype;
 	}
 
 
-	public void setAccounttype(List<AccountType> accounttype) {
+	public void setAccounttype(Set<AccountType> accounttype) {
 		this.accounttype = accounttype;
 	}
+
+	
 	
 }

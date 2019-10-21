@@ -43,6 +43,9 @@ public class Account {
             cascade =  CascadeType.ALL,
             mappedBy = "account")
     private UserAccount useraccount;
+	
+	@OneToMany(mappedBy = "account", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private Set<AnswerSheet> answersheet;
 
 	public String getACCOUNTID() {
 		return ACCOUNTID;
@@ -68,5 +71,13 @@ public class Account {
 	public void setACCOUNTTYPEID(int aCCOUNTTYPEID) {
 		ACCOUNTTYPEID = aCCOUNTTYPEID;
 	}
-	
+
+	public Set<AnswerSheet> getAnswersheet() {
+		return answersheet;
+	}
+
+	public void setAnswersheet(Set<AnswerSheet> answersheet) {
+		this.answersheet = answersheet;
+	}
+
 }
